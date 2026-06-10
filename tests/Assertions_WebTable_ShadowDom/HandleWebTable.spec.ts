@@ -1,4 +1,8 @@
 import { test, expect } from '@playwright/test'
+
+
+
+
 test("Handle WebTable", async ({ page }) => {
     await page.goto("https://money.rediff.com/indices/nse/nifty-50");
 
