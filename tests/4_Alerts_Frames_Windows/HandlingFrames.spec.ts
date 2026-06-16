@@ -4,6 +4,7 @@ test("Handling Frames", async ({ page }) => {
     const frame1 = await page.frameLocator('#iframeResult')
     await frame1.locator('#fname').fill('')
     await frame1.locator('#fname').fill('Vinod')
+    await page.pause();
     await frame1.locator('#lname').fill('')
     await frame1.locator('#lname').fill('Sharma')
     await frame1.locator("xpath=//input[@type='submit']").click();
