@@ -31,8 +31,9 @@ export default defineConfig({
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on',
     headless: false,
-    browserName: 'chromium',
-    channel: 'chrome',
+    screenshot:'only-on-failure',
+    // browserName: 'chromium',
+    // channel: 'chrome',
     video: 'on'
   },
 
@@ -40,12 +41,13 @@ export default defineConfig({
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      testMatch:/.*Chrome\.spec\.ts/,
+      use: { ...devices['Desktop Chrome'], browserName: 'chromium', channel: 'chrome' },
     },
 
     // {
-    // name: 'firefox',
-    // use: { ...devices['Desktop Firefox'] },
+      // name: 'firefox',testMatch:/.*Firefox\.spec\.ts/,
+      // use: { ...devices['Desktop Firefox'], browserName: 'firefox', channel: 'firefox' },
     // },
 
     // {
