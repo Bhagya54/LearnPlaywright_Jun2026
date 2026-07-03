@@ -22,7 +22,7 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
+  reporter: [['html'], ['allure-playwright']],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
@@ -31,7 +31,7 @@ export default defineConfig({
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on',
     headless: false,
-    screenshot:'only-on-failure',
+    screenshot: 'only-on-failure',
     // browserName: 'chromium',
     // channel: 'chrome',
     video: 'on'
@@ -41,13 +41,13 @@ export default defineConfig({
   projects: [
     {
       name: 'chromium',
-      testMatch:/.*Chrome\.spec\.ts/,
+      //testMatch:/.*Chrome\.spec\.ts/,
       use: { ...devices['Desktop Chrome'], browserName: 'chromium', channel: 'chrome' },
     },
 
     // {
-      // name: 'firefox',testMatch:/.*Firefox\.spec\.ts/,
-      // use: { ...devices['Desktop Firefox'], browserName: 'firefox', channel: 'firefox' },
+    // name: 'firefox',testMatch:/.*Firefox\.spec\.ts/,
+    // use: { ...devices['Desktop Firefox'], browserName: 'firefox', channel: 'firefox' },
     // },
 
     // {
